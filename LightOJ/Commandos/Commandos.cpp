@@ -56,21 +56,19 @@ void solve() {
     adj[u].emplace_back(v);
     adj[v].emplace_back(u);
   }
-  vector dis_from_source(n, 0), dis_from_destinataion(n, 0);
+  vector dis_from_source(n, (int)1e9 + 7),
+      dis_from_destinataion(n, (int)1e9 + 7);
   auto bfs = [&](int src, auto &dist) {
     queue<int> q;
     q.emplace(src);
     dist[src] = 0;
-    vector vis(n, false);
-    vis[src] = false;
     while (q.size()) {
       auto u = q.front();
       q.pop();
-      vis[u] = true;
       for (auto v : adj[u]) {
-        if (vis[v])
+        if (dist[u] + 1 >= dist[v])
           continue;
-        dist[v] = dist[u] + 1;
+        dist[v] = min(dist[v], dist[u] + 1);
         q.emplace(v);
       }
     }
