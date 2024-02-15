@@ -1,0 +1,4 @@
+--- Case #0 start ---
+time = 0.00006 sec
+--- Case #1 start ---
+time = 0.00009 sec
