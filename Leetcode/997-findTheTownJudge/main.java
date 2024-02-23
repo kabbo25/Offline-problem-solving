@@ -14,4 +14,6 @@ class Solution {
     }
     return judge;
   }
+
+  public static void main(String[] args) { System.out.println("hello"); }
 }
