@@ -47,10 +47,12 @@ public:
     static int smallestChair(vector<vector<int>> &times, int targetFriend) {
         priority_queue<int,vector<int>,greater<>> pq;
         vector<array<int, 2>> arrival, leaving;
+        map<int,vector<int>>present;
         int mx = 0;
         for (int i(0); i < (int) times.size(); ++i) {
             arrival.push_back({times[i][0], i});
             leaving.push_back({times[i][1], i});
+            present[times[i][1]].emplace_back(i);
             mx = max({mx, times[i][0], times[i][1]});
         }
         sort(arrival.begin(), arrival.end());
@@ -61,7 +63,8 @@ public:
             auto it = lower_bound(leaving.begin(), leaving.end(), array<int, 2>{i, (int) -1e9});
             if (it != leaving.end() and (*it)[0] == i) {
                 auto [time, idx] = *it;
-                pq.emplace(sittingPosition[idx]);
+                for(auto x:present[time])
+                    pq.emplace(sittingPosition[x]);
                // sittingPosition.erase(idx);
                 //currentChair--;
                 //    dbg(time,idx,i);
@@ -79,13 +82,13 @@ public:
 };
 
 int main() {
-    vector<vector<int>> A{{1, 4},
-                          {2, 3},
+    vector<vector<int>> A{{3, 4},
+                          {2, 4},
                           {4, 6}};
     vector<vector<int>> B{{3, 10},
                           {1, 5},
                           {2, 6}};
-    cout << Solution::smallestChair(A, 1) << endl;
+    cout << Solution::smallestChair(A, 2) << endl;
     cout << Solution::smallestChair(B, 0) << endl;
     return 0;
 }
