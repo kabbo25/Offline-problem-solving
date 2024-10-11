@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.29"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "1942__The_Number_of_the_Smallest_Unoccupied_Chair",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "1942__The_Number_of_the_Smallest_Unoccupied_Chair::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-1942__The_Number_of_the_Smallest_Unoccupied_Chair-Debug-d657282d23c357e1d671.json",
+					"name" : "1942__The_Number_of_the_Smallest_Unoccupied_Chair",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/kabbo/ghq/github.com/kabbo25/Offline-problem-solving/Leetcode/1942. The Number of the Smallest Unoccupied Chair/cmake-build-debug",
+		"source" : "C:/Users/kabbo/ghq/github.com/kabbo25/Offline-problem-solving/Leetcode/1942. The Number of the Smallest Unoccupied Chair"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

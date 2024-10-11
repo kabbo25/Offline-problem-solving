@@ -1,0 +1,3 @@
+C:/Users/kabbo/ghq/github.com/kabbo25/Offline-problem-solving/Leetcode/1942. The Number of the Smallest Unoccupied Chair/cmake-build-debug/CMakeFiles/1942__The_Number_of_the_Smallest_Unoccupied_Chair.dir
+C:/Users/kabbo/ghq/github.com/kabbo25/Offline-problem-solving/Leetcode/1942. The Number of the Smallest Unoccupied Chair/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/kabbo/ghq/github.com/kabbo25/Offline-problem-solving/Leetcode/1942. The Number of the Smallest Unoccupied Chair/cmake-build-debug/CMakeFiles/rebuild_cache.dir

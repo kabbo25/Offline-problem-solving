@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(1942__The_Number_of_the_Smallest_Unoccupied_Chair)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(1942__The_Number_of_the_Smallest_Unoccupied_Chair main.cpp)
