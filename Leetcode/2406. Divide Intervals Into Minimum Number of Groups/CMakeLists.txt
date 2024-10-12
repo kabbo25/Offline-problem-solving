@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(2406__Divide_Intervals_Into_Minimum_Number_of_Groups)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(2406__Divide_Intervals_Into_Minimum_Number_of_Groups main.cpp)
