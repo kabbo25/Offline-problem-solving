@@ -44,28 +44,22 @@ public:
         {
             int left = lower;
             vector<vector<int>> res;
-            if (nums.empty()) {
-                return {{lower, upper}};
+            if(nums.empty()){
+                return {{lower,upper}};
             }
-            nums.insert(nums.begin(), lower);
-            nums.emplace_back(upper);
-            for (int i(0); i < (int) nums.size(); ++i) {
-                if (nums[i] - left <= 1) {
-                    left = nums[i];
-                    continue;
-                }
-                if (i == 0) {
-                    res.push_back({left, nums[i] - 1});
-                    left = nums[i];
-                    continue;
-                }
-                if (i == (int) nums.size() - 1) {
-                    res.push_back({left + 1, nums[i]});
-                    continue;
-                }
-                res.push_back({left + 1, nums[i] - 1});
-                left = nums[i];
+            if(lower!=nums.front()){
+                res.push_back({lower,nums.front()-1});
             }
+            for (int num : nums) {
+                if (num - left <= 1) {
+                    left = num ;
+                    continue;
+                }
+                res.push_back({left+1, num - 1});
+                left = num;
+            }
+            if(nums.back()!=upper)
+                res.push_back({nums.back()+1,upper});
             return res;
         }
     }
