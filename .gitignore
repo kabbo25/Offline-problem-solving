@@ -16,9 +16,9 @@ _deps
 [Dd]ebug/
 [Rr]elease/
 
-# IDE specific files (optional, uncomment if needed)
-# .vscode/
-# .idea/
+# IDE specific files
+.vscode/
+.idea/
 
 # Compiled Object files
 *.slo
