@@ -41,27 +41,33 @@ void dbg_out(Head H, Tail... T) {
 class Solution {
 public:
     static vector<vector<int>> findMissingRanges(vector<int> &nums, int lower, int upper) {
-        int left = lower;
-        vector<vector<int>> res;
-        nums.emplace_back(upper);
-        for (int i(0); i < (int) nums.size(); ++i) {
-            if (nums[i] - left <= 1) {
-                left = nums[i] ;
-                continue;
+        {
+            int left = lower;
+            vector<vector<int>> res;
+            if (nums.empty()) {
+                return {{lower, upper}};
             }
-            if(i==0){
-                res.push_back({left,nums[i]-1});
-                left=nums[i];
-                continue;
+            nums.insert(nums.begin(), lower);
+            nums.emplace_back(upper);
+            for (int i(0); i < (int) nums.size(); ++i) {
+                if (nums[i] - left <= 1) {
+                    left = nums[i];
+                    continue;
+                }
+                if (i == 0) {
+                    res.push_back({left, nums[i] - 1});
+                    left = nums[i];
+                    continue;
+                }
+                if (i == (int) nums.size() - 1) {
+                    res.push_back({left + 1, nums[i]});
+                    continue;
+                }
+                res.push_back({left + 1, nums[i] - 1});
+                left = nums[i];
             }
-            if(i==(int)nums.size()-1){
-                res.push_back({left+1,nums[i]});
-                continue;
-            }
-            res.push_back({left+1, nums[i] - 1});
-            left = nums[i];
+            return res;
         }
-        return res;
     }
 };
 
@@ -69,6 +75,6 @@ int main() {
     vector<int> A{0, 1, 3, 50, 75};
     vector<int> B{-1};
     cout << Solution::findMissingRanges(A, 0, 99) << endl;
-    cout << Solution::findMissingRanges(B, -1, -1) << endl;
+    cout << Solution::findMissingRanges(B, -2, -1) << endl;
     return 0;
 }
