@@ -19,6 +19,7 @@ _deps
 # IDE specific files
 .vscode/
 .idea/
+cmake-build-debug/
 
 # Compiled Object files
 *.slo
