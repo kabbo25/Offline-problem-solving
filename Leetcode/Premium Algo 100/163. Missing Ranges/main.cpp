@@ -49,6 +49,7 @@ public:
             }
             if(lower!=nums.front()){
                 res.push_back({lower,nums.front()-1});
+                left=nums.front();
             }
             for (int num : nums) {
                 if (num - left <= 1) {
