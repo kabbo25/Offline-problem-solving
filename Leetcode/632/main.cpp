@@ -86,6 +86,7 @@ public:
     static vector<int> smallestRange(vector<vector<int>> &nums) {
         vector<array<int, 2>> sorted_list;
         int n = (int) nums.size();
+        cout<<n<<endl;
         int need_mask = (1 << n) - 1;
         int mask = 0, mx = -2e9, mn = 2e9;
         for (int i(0); i < (int) nums.size(); ++i) {
@@ -96,17 +97,17 @@ public:
         sort(sorted_list.begin(), sorted_list.end());
         sparse_table<int> st_min((int) sorted_list.size(), std::min<int>, [&](int i) { return sorted_list[i][0]; });
         sparse_table<int> st_max((int) sorted_list.size(), std::max<int>, [&](int i) { return sorted_list[i][0]; });
-       // cout << sorted_list << endl;
+         cout << sorted_list << endl;
         vector<int> res;
         auto reset = [&]() {
             mx = -2e9, mn = 2e9;
         };
-        vector<int>ache(n);
+        vector<int> ache(n);
         for (int i(0); i < n; ++i) {
             mask |= (1 << sorted_list[i][1]);
             mx = max(mx, sorted_list[i][0]);
             mn = min(mn, sorted_list[i][0]);
-            ache[sorted_list[i][1]]=i;
+            ache[sorted_list[i][1]] = i;
         }
         if (mask == need_mask) {
             res.push_back(mn);
@@ -116,19 +117,24 @@ public:
 
         for (int i(n); i < (int) sorted_list.size(); ++i) {
             auto remove_mask = ~(1 << sorted_list.at(i - n)[1]);
-            if(ache[sorted_list[i-n][1]]==i-n) {
+            if (ache[sorted_list[i - n][1]] == i - n) {
                 mask &= remove_mask;
-               // dbg(remove_mask,ache,i);
+                // dbg(remove_mask,ache,i);
             }
-            ache[sorted_list[i][1]]=i;
+            ache[sorted_list[i][1]] = i;
             mask |= (1 << sorted_list[i][1]);
             if (mask == need_mask) {
-                mn = st_min.accumulate(i-n+1, i +1);
-                mx = st_max.accumulate(i-n+1, i +1);
+                mn = st_min.accumulate(i - n + 1, i + 1);
+                mx = st_max.accumulate(i - n + 1, i + 1);
                 //dbg(mask,i,mn,mx);
+                if (res.empty()) {
+                    res.push_back(mn);
+                    res.push_back(mx);
+                    continue;
+                }
                 if (res[1] - res[0] > mx - mn) {
-                    res[0]=(mn);
-                    res[1]=(mx);
+                    res[0] = (mn);
+                    res[1] = (mx);
                     reset();
                 }
             }
@@ -138,11 +144,10 @@ public:
 };
 
 int main() {
-    vector<vector<int>> A{{4, 10, 15, 24, 26},
-                          {0, 9,  12, 20},
-                          {5, 18, 22, 30}};
-    vector<vector<int>> B{{10,10},{11,11}};
-  //  cout << Solution::smallestRange(A) << endl;
-    cout << Solution::smallestRange(B) << endl;
+    vector<vector<int>> A{{11,38,83,84,84,85,88,89,89,92},{28,61,89},{52,77,79,80,81},{21,25,26,26,26,27},{9,83,85,90},{84,85,87},{26,68,70,71},{36,40,41,42,45},{-34,21},{-28,-28,-23,1,13,21,28,37,37,38},{-74,1,2,22,33,35,43,45},{54,96,98,98,99},{43,54,60,65,71,75},{43,46},{50,50,58,67,69},{7,14,15},{78,80,89,89,90},{35,47,63,69,77,92,94}};
+    vector<vector<int>> B{{10, 10},
+                          {11, 11}};
+      cout << Solution::smallestRange(A) << endl;
+  //  cout << Solution::smallestRange(B) << endl;
     return 0;
 }
