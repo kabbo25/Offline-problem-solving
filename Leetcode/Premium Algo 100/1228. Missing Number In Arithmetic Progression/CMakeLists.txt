@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(1228__Missing_Number_In_Arithmetic_Progression)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(1228__Missing_Number_In_Arithmetic_Progression main.cpp)
