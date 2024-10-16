@@ -1,0 +1,11 @@
+a =
+2
+b =
+2
+c =
+1
+Use Testcase
+Output
+"bbaacc"
+Expected
+"aabbc"
