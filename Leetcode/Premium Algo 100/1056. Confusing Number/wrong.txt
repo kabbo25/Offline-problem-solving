@@ -1,0 +1,5 @@
+input
+11
+
+temp=1111
+which should 11
