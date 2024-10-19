@@ -4,7 +4,7 @@ class Solution {
 public:
     bool confusingNumber(int n) {
         string s= to_string(n);
-        string temp=s;
+        string temp;
         for(int i((int)s.length()-1);i>=0;--i){
             if(s[i]=='9')temp+='6';
             else if(s[i]=='6')temp+='9';
