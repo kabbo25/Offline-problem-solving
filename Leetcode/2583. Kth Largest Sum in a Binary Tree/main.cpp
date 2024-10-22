@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <cstdint>
 #include <iostream>
-#include <map>
 #include <queue>
 #include <vector>
 using namespace std;
@@ -20,26 +19,23 @@ class Solution {
 public:
   long long kthLargestLevelSum(TreeNode *root, int k) {
     // Your solution implementation here
-    map<int, int> mp;
-    map<int, int64_t> sum;
     queue<TreeNode *> pq;
+    vector<int64_t> sorted_sum;
     pq.push(root);
     while (pq.size()) {
-      auto cur = pq.front();
-      pq.pop();
-      sum[mp[cur->val]] += cur->val;
-      if (cur->left != nullptr) {
-        mp[cur->left->val] = mp[cur->val] + 1;
-        pq.push(cur->left);
+      int64_t cur_sum = 0;
+      int sz=pq.size();
+      for (int i(0); i < sz; ++i) {
+        auto cur_node = pq.front();
+        pq.pop();
+        cur_sum += cur_node->val;
+        if (cur_node->left)
+          pq.push(cur_node->left);
+        if (cur_node->right)
+          pq.push(cur_node->right);
       }
-      if (cur->right != nullptr) {
-        mp[cur->right->val] = mp[cur->val] + 1;
-        pq.push(cur->right);
-      }
-    }
-    vector<int64_t> sorted_sum;
-    for (auto [a, b] : sum) {
-      sorted_sum.emplace_back(b);
+      cout<<cur_sum<<endl;
+      sorted_sum.emplace_back(cur_sum);
     }
     sort(sorted_sum.rbegin(), sorted_sum.rend());
     return k >= (int)sorted_sum.size() ? -1 : sorted_sum[k - 1];
@@ -92,8 +88,8 @@ void deleteTree(TreeNode *root) {
 
 int main() {
   // Test case
-  vector<int> values = {5, 8, 9, 2, 1, 3, 7};
-  int k = 4;
+  vector<int> values = {5, 8, 9, 2, 1, 3, 7, 4, 6};
+  int k = 2;
 
   // Create the tree
   TreeNode *root = createTree(values);
