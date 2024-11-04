@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.29)
+project(1593__Split_a_String_Into_the_Max_Number_of_Unique_Substrings)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(1593__Split_a_String_Into_the_Max_Number_of_Unique_Substrings main.cpp)
