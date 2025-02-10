@@ -37,3 +37,7 @@ FROM Visits v
 LEFT JOIN Transactions t ON v.visit_id = t.visit_id
 WHERE t.transaction_id IS NULL
 GROUP BY v.customer_id;
+
+SELECT SUM(visit_id) FROM Visits;
+SELECT MIN(Visits.customer_id) FROM Visits;
+SELECT STDDEV(Visits.customer_id) FROM Visits;
