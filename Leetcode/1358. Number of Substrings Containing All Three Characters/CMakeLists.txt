@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.30)
+project(1358__Number_of_Substrings_Containing_All_Three_Characters_)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(1358__Number_of_Substrings_Containing_All_Three_Characters_ main.cpp)
